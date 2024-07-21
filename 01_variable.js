@@ -35,4 +35,4 @@ for (let i = 0; i < 2; i++) {
 }
 // console.log(i)       i is not define 
 
-/* Prefer not to use var because of issue in block scope and functional scope*/
+/* Prefer not to use var because of issue in block scope and functional scope */
