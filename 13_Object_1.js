@@ -5,7 +5,7 @@ OBJECT:
   > there are two ways of array declaration : 
     1) by litearl
     2) constructor   (diff of singleton ka h baki as it is h dono method)
-     ) new keyword
+     
   > SINGLETON:- jb ap constructor se object bnate h to singleton ak object bnata h(menas apne tarike ka ak hi object h)
              :- lekin jb ap literal se bnate h to singleton nhi bnata uske bhut sare instance bn jate h(kiske->object k)
     [note: litearl se banega to singleton nhi hoga, construcotr se bna to singleton hoga]
@@ -32,6 +32,10 @@ OBJECT:
   >typeof obj.fnName   o/p function
   >typeof obj.name/age     o/p string
   >typeof symbolname   o/p symbol
+
+  >2) with help of constructor  ---> in next file
+
+  >we can also merge the object as array
 
 */
 //yha hm key bhi define kr skte h(name dena ho name do name ki jgh 0 likhna ho 0 likho), value
@@ -110,6 +114,7 @@ obj.greeting= function(){
 console.log(obj.greeting)   //[Function (anonymous)] //fn return break  , fn execute nhi hua h fn ka reference aya h
 console.log(obj.greeting())    //  hello, i am nidhi
                                //  undefined     //ye bhi ak extra execution hota h
+     // pta chal gya undefine isliye a rha h kyo ki hm fn ko console kra rhe h, jiski need nhi h
 console.log(obj)
 //o/p : {
 //   name: 'pooja mukati',
