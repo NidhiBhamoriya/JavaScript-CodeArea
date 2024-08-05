@@ -8,6 +8,7 @@ console.log(typeof (balance.toString()));       //string
 console.log(balance.toString());      //123
 console.log(balance.toString().substring(0,2))   //10
 console.log(balance.toFixed(1))     //100.0 
+// console.log(balance)     //100.0 ;
 
 const n=23.8932
 console.log(n.toPrecision(2));    //24

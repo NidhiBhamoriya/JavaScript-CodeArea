@@ -31,7 +31,7 @@ for (let i = 0; i < 2; i++) {
     if(true){
         let b=2;        
     }
-    //console.log(b);      // b is undefined
+    // console.log(b);      // b is undefined
 }
 // console.log(i)       i is not define 
 

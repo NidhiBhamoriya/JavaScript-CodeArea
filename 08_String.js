@@ -13,6 +13,7 @@ const repoCount = 50
 
 //  this syntax is outdated 
 console.log("hello my name is " + s + " and my repo count is " + repoCount +`.`)         //nidhi50 value        
+// console.log("originak array : ",arr1,"sss",2);
 
 // String Templates / Template Strings / Template Literals :
 // Template Strings use back-ticks (``) rather than the quotes ("") to define a string:
@@ -46,7 +47,7 @@ console.log(gameName.indexOf('h'));    //1
 console.log(gameName.substring(1,3));   //he
 console.log(gameName.substring(-3,3));   //che         end not included
 console.log(gameName.slice(0,2));         // slice reverse 
-console.log(gameName.slice(-4,2));
+console.log(gameName.slice(-0,5));
 console.log(gameName.slice(-3,4));
 
 const newStr= "     hitesh    "
