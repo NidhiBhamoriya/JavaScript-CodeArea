@@ -1,2 +1,2 @@
 # JavaScript-CodeArea
-CodeSpacse feature utilization for javaScript practice.
+CodeSpacse feature utilization for javaScript revision.
