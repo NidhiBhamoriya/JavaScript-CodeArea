@@ -1,2 +1,2 @@
 # JavaScript-CodeArea
-CodeSpacse feature utilization for javaScript revision.
+CodeSpace feature utilization for javaScript revision.
