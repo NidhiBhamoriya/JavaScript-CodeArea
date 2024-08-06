@@ -52,7 +52,7 @@ console.log(instructor);      //hitesh
 
 
 
-//API : apna kam dusre ke sir pr dal dena
+//API : apna kam dusre ke sr pr dal dena
 //ex: manu card api ka documentation
 //ex: apne login kiya, ab ye ap ka headache nhi h ki google us bnde ko verify kese krega, uska email
 //    dla h ki nhi h, register h ki nhi h --- yh sare kam API ke through hote h

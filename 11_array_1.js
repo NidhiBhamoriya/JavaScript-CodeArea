@@ -36,7 +36,10 @@ console.log(arr[0]);
                         necessary, inserts new elements in their place, returning the deleted element
 */      
 
-const arr = [0,1,true,"hello",null];  
+const arr = [0,1,true,"hello",null,undefined, ""];  
+console.log(arr);    //[ 0, 1, true, 'hello', null, undefined, '' ]
+
+
 const arr1 = [0, 1, 2, 3, 4, 5]
 
 const arr2 = ["abc", "pqr", "xyz"]
