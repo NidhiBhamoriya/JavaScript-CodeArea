@@ -37,3 +37,4 @@ console.log("2"==2)     //true     kyo ki conversion ho jayega   "2" --se--> 2
 console.log("2"===2)    //false    strict check datatype same nhi h   (conversion kru ya nhi kru, nhi kyo ki === bol dega ki yh equal h hi nhi, as datatype hi same nhi h)
 console.log(true==1);   //true
 console.log(true===1);   //false
+console.log(""==0)   //true
