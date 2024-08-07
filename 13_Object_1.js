@@ -131,3 +131,13 @@ obj.greetingTwo = function(){
 console.log(obj.greeting());     //hello, i am nidhi
 console.log(obj.greetingTwo());   //hello obj as user name : nidhi bhamoriya
 
+
+/*
+ * Objects are objects
+ * Maths are objects
+ * Functions are objects
+ * Dates are objects
+ * Arrays are objects
+ * Maps are objects
+ * Sets are objects 
+ */
