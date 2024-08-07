@@ -34,7 +34,10 @@ console.log(s);
 Returns a string containing a number represented either in exponential or fixed-point notation 
 with a specified number of digits.*/
 
+//***************************** */
 
+Number.MAX_VALUE
+Number.MIN_VALUE
 
 //************************************MATHS***************************************************** */
 // math library
@@ -42,9 +45,7 @@ with a specified number of digits.*/
 console.log(Math);          //Object [Math] {}
 console.log(typeof Math);   //object
 const pi = Math.PI
-console.log(pi);         //3.141592653589793
-console.log(Math.MAX_VALUE);
-console.log(Math.MIN_VALUE);                                     //  [Note:M should capital]
+console.log(pi);         //3.141592653589793                                   //  [Note:M should capital]
 console.log(Math.max(1,2));       //2
 console.log(Math.min(-5,3));      //-5
 console.log(Math.abs(-5))         //5
