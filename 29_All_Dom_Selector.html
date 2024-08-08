@@ -5,15 +5,157 @@
     <title>DOM Learning</title>
     <style>
         .bg-black{
-            background-color: #212121;
-            /* color: white; */
+            background-color: black;
+            color: white;
         }
     </style>
 </head>
 <body class="bg-black">
     <div >
-        <h1 id="title" class="heading">Dom Learning</h1>
-        <p>Lorem ipsum dolor sit amet.</p>
+        <h1 id="title" class="heading">Dom Learning <span style="display:none">on Chai aur Code</span></h1>
+        <h1>h1</h1>
+        <p style="color:darkblue; background-color: brown;">Lorem ipsum dolor sit amet.</p>
+        <input type="password" name="" id="">
+        <ul>
+          <li class="list-item">one</li>
+          <li class="list-item">two</li>
+          <li class="list-item">three</li>
+          <li class="list-item">Four</li>
+        </ul>
     </div>
 </body>
 </html>
+<!-- 
+BROWSER :  
+
+
+
+document.getElementById("title")       //''/""/``
+  <h1 id="title" class="heading">Dom Learning Process</h1>
+document.getElementById("title").id
+  'title'
+document.getElementById("title").class
+  undefined                           <--------- ye to nhi btaoga there is some reason behind that
+document.getElementById("title").className
+  'heading'
+document.getElementById(`title`).getAttribute()
+  //error                            <---- direct nhi dega hme btana pde ga kya hme chahiye
+document.getElementById(`title`).getAttribute("id")
+  'title'                              <----- key do value dega
+document.getElementById(`title`).setAttribute("id","test")
+//it will override the id by test
+
+document.getElementById(`test`).style.color = "red"
+    or
+const title = document.getElementById(`test`)     //test likhege ab
+title.style.color = "red"
+
+title.style.backgroundColor = "black"       'black'/`black`/"black"
+title.style.padding = "15px"
+
+title.style.fontSize = `50px`
+
+title
+  <h1 id="test" class="heading" style="color: red; background-color: black; 
+   padding: 15px; font-size:50px;">Dom Learning Process</h1>
+
++++++++++++++++++++++++++++++++++++++++++++ How To add content 
+
+//if display attribute is not present than :
+title.innerHTML
+  'DOM Learning <span>on Chai aur Code</span>''    
+title.textContent
+  'Dom Learning on Chai aur Code'
+title.innerText
+  'Dom Learning on Chai aur Code'
+
+//if display attribute is present than :
+title.innerHTML
+  'DOM Learning <span style="display:none">on Chai aur Code</span>'   
+title.textContent                  <------ NOTE:TEXTCONTENT PURA TEXT CONTENT DEDETA H BLE KHI US 
+  Dom Learning on Chai aur Code                  ELEMNT KA FIR CHAHE USME KOI DATA VISIBLE NA HO
+title.innerText              <---- NOTE: TEXT DEGI BUT ONLY VISIBLE DATA OF THAT ELEMENT
+  Dom Learning 
+
+document.querySelector("h1").style.color ='red'    <---- [NOTE : only first h1 tag is selected ]
+documnet.querySelector("#title").style.color = 'blue'
+document.querySelector('.heading').textContent
+document.querySelector('input[type="password"]')    //adding attribute
+documtn.querySelector('h1:first-child')              
+
+
+document.querySelector('ul')
+  > <ul>...</ul>
+const myUl = document.querySelector('ul')
+  undefined
+myUl.document.querySelector('li')             <---- first list is selected only as we know
+  >  <li>...</li>
+const turngreen = myUl.querySelector('li')
+  undefinef
+turngreen.style.backgroundColor = "red"    
+  'red'
+turngreen.innerText = "India"
+  
+
+/+++++++++++++++++++++++++++++++++++++++++++++  Intersting concept  (NODELIST)
+
+querySelectorAll:
+
+document.querySelectorAll('li')           <----- select all the query : li (list)
+  v nodeList(3) [li, li, li]
+      > 0: li
+      > 1: li
+      > 2: li                          <--- nodelist is not array  (we can apply foreach)
+        length:3
+      > [[prototype]]:Nodelist
+
+//hm ese direct change nhi kr skte. see below
+
+const tempList = document.querySelectorAll('li')
+templist.style.color = "green"
+  >ERROR : cannot set property of undefined (setting 'color')
+tempList[0].style.color = "green"
+
+   //p is single tag ok,
+const myP = document.querySelectorAll('p')
+myP.style.color = "red"     <------- nodelist h direct change nhi kr skte ble single element h in nodelist m
+  >ERROR : cannot set property of undefined (setting 'color')
+myP[0].style.color = "red"
+  'red'
+
+  //forEach loop        <==========(NOTE: NODELIST HAVE FOREACH PROPERTY, BUT MAP, ETC ONE )
+const tempList = document.querySelectorAll('li')
+tempList.forEach(function(l){                <------- sbhi list ka bg-color change hojayega
+  l.style.backgroundColor = 'hotpink'
+})
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++   Intersting concept  (HTML COLLECTION)
+
+getElementByClassName('classname') :
+
+document.getElementByClassName('list-item')
+  > HTMLCollection(4) [li.list-item, li.list-item, li.list-item, li.list-item]
+
+// HTMLCollection is also not an array, also even not have property like forEach, map 
+//    etc for looping
+
+//NOTE: CONVERSION NEEDED FROM HTMLCOLLECTION TO AN ARRAY FOR LOOPING (foreach,map etc lganekeliye)
+
+const tempClassList = getElementByClassName('list-item')
+  undefined
+tempClassList 
+  > HTMLCollection(4) [li.list-item, li.list-item, li.list-item, li.list-item]
+Array.from(tempClassList)
+  > (4) [li.list-item, li.list-item, li.list-item, li.list-item]
+const myConvertedArray = Array.from(tempClassList)
+  undefined
+myConvertedArray
+  > (4) [li.list-item, li.list-item, li.list-item, li.list-item]
+//looping
+myConvertedArray.forEach(function(item){
+  item.style.fontSize = "40px";
+  item.style.fontWeight = "400"
+})
+
+-->
