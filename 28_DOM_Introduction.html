@@ -1,0 +1,58 @@
+<!DOCTYPE html>         <!--  <---- this tell only about type, of document-->
+<html lang="en">    <!--  <----- here the document start -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Learning</title>
+</head>
+<body>
+    <div class="bg-black">
+        <h1 class="heading">Dom Learning</h1>
+        <p>Lorem ipsum dolor sit amet.</p>
+    </div>
+</body>
+</html>
+
+<!-- 
+
+ DOM : DOCUMENT OBJECT MODEL
+ 
+ document -> html
+ object -> head, body etc
+ document object model -> structure/ model
+ -> and if you know the structure well you can manupulate it easily according to requirement.
+
+
+ ->Brendan Eich -> he created js programming language
+ ->browser->console-> console.log(window)usme window/ console.log(document)/console.dir(document)
+    (u get all information about document)
+
+=>Diagram : 
+                                       Window
+                                         |
+                                      Document
+                                         |
+                                        HTML
+                         ________________|_____________________
+                         |                                     |
+                        head                                  Body
+                 ________|________                              |
+                 |                |                            div ~~~~~~~-> attribute
+               title            meta               _____________|_______________
+                 !                !                |                            |
+             text node        attribute            h1                           p
+(means text add kr rkha h)                    _____|_____                       !
+ (i.e Dom Learning)                          !           !                  text node
+                                      attribute        text node
+
+                             (Dia. Document Object Model)
+
+
+ node-> html,head,body etc (that have <> && </>)
+ meta-> meta ke pass koi node nhi h -> isliye likha attribute
+
+
+ ->browser->console->console.log(document.links)~~~~~~~~~> HTML Collection
+ ->HTML Collection, Node Collection and array all are different. bydeault array nhi h, but then
+    can convert into array. So, they also not having property: map, foreach etc. OK
+-->
