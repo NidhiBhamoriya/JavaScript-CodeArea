@@ -61,7 +61,7 @@ title
 
 +++++++++++++++++++++++++++++++++++++++++++ How To add content 
 
-//if display attribute is not present than :
+//if display attribute is not present (in their child node) than :
 title.innerHTML
   'DOM Learning <span>on Chai aur Code</span>''    
 title.textContent
@@ -69,7 +69,7 @@ title.textContent
 title.innerText
   'Dom Learning on Chai aur Code'
 
-//if display attribute is present than :
+//if display attribute is present (in their child node)  than :
 title.innerHTML
   'DOM Learning <span style="display:none">on Chai aur Code</span>'   
 title.textContent                  <------ NOTE:TEXTCONTENT PURA TEXT CONTENT DEDETA H BLE KHI US 
