@@ -1,0 +1,53 @@
+
+<!-- Relation : parent-child relation, child-child relation, child-parent relation 
+ This Reation Used In Adding Element, Creating Element -->
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+ </head>
+ <body style="background-color: black; color: white;">
+    <div class="parent">                      <!-- div.parent ENETR -->
+        <div class="day">Modnday</div>                 <!-- div.day*4 ENTER-->
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
+    </div>
+ </body>
+ <script>                   /*it can be outside the body also*/
+
+   //PARENT TO CHILD:
+
+    const parent = document.querySelector('.parent')
+    console.log(parent)
+    /* > <div class='parent'>...</div>*/
+    console.log(parent.children)         /* IMPORTANT PROPERTY */
+    /*HTMLCollection(4) [div.day, div.day, div.day, div.day]*/
+   console.log(parent.children[1])      //<div class="day" style="color: orange;">Tuesday</div>
+    console.log(parent.children[1].innerHTML)    //Tuesday
+ 
+    //we can apply loop   // we cna convert into arry but we can use for loop
+    for (let i = 0; i < parent.children.length ; i++) {
+      console.log(parent.children[i].innerHTML);    //Modnday Tuesday Wednesday Thursday
+    }
+
+    parent.children[1].style.color="orange"
+
+    console.log(parent.firstElementChild)    //<div class="day">Modnday</div>
+    console.log(parent.lastElementChild)    //<div class="day">Thursday</div>
+
+
+   // CHILD TO PARENT
+   //to optimize krne ke liye, direct parant pr ja skte the querySelector pure tree travers krti isliye (child to parent is optimized way)
+    const dayone = document.querySelector('.day')     //only first query selected of classname day
+    console.log(dayone)     ///<div class="day">Modnday</div>
+    console.log(dayone.parentElement)   // > <div class="parent"> ... <div>              
+    console.log(dayone.nextElementSibling)   // <div class="day" style="color: orange;">Tuesday</div>
+
+      console.log(parent.childNodes)//  nodeList(9) text div text div......       text for line change/enter
+      //if add 1 comment in div than nodeList(11) text comment text div text div.....  
+ </script>
+ </html>
