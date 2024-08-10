@@ -9,6 +9,38 @@
     
 </body>
 <script>
+    const div = document.createElement('div')
+    console.log(div);                              // <div></div>       //div m h kya dekhne ke liye console kiya
+    div.className = "main"                         //<div class="main"></div>
+    div.id = Math.round(Math.random() * 10 + 1)       //<div class="main" id="2"></div>
+    div.setAttribute("title", "generated title")    //key value //<div class="main" id="4" title="generated title"></div>
+    div.style.backgroundColor = "red"              //<div class="main" id="11" title="generated title" style="background-color: red;"></div>
+    div.style.height = "50px"                    //<div class="main" id="11" title="generated title" style="background-color: red; height: 100px;"></div>
+    // div.innerHTML = "Hello Viewer"                //<div class="main" id="6" title="generated title" style="background-color: red; height: 100px;">Hello Viewer</div>
+          //or
+    const addText = document.createTextNode("Hello Viewer")
+    div.appendChild(addText)
 
+    //  CONSOLE PR TO A RHA H PR PAGE PR TO NHI AA RHA H :
+    //ANS: abhi yh div memeory m h ese attach krna pdega document m
+
+    //Attaching :
+
+    document.body.appendChild(div)             //just like phlo jo kiyaa div m text node add/append 
+                                               //kr di as child node, vese yha hm child node div 
+                                               //append kr rhe h in the body
+
+    //AB HM CHAHE TO FN M WRAP KR SKTE H  AND CALL KR SKTE H WITH ALG ALG TEXT DE KR
+    //LOOP LGA SKTE H
 </script>
 </html>
+
+<!--
+div.innerHTML = "Hello Viewer"    ~~~~~> isme do round trip hote h , ye chije overwrite krta h hena, to yh phle reference layega(values layega) than vha pr overWrite krega
+
+// pr esko optimized kr skte h ese:
+
+const addText = document.createTextNode("Hello Viewer")      //~~~>we are creating our own text node, naki uske innertext , ja rhe h
+div.appendChild(addText)                 
+
+-->
