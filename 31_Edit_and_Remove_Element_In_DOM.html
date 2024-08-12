@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit and Remove Element In Dom</title>
+</head>
+<body style="background-color: black; color:white">
+    <ul class="language">
+        <li>JavaScript</li>
+    </ul>
+</body>
+<script>
+    //we have add one more list item
+
+    function addLanguage(langName){
+        const li = document.createElement('li')
+        // li.innerHTML = langName
+        li.innerHTML = `${langName}`                   
+        document.querySelector('.language').appendChild(li);
+        
+    }
+    addLanguage("java")
+    addLanguage("c")
+
+    //there is problem in above method, when we have to add 1000th, 1lakh. because whenever list 
+    // is attch, the whole tree traversal is done, as we use inneHTML.
+
+    //FOR LARGE SCALE PROJECT:
+    function addlanguageOptimizedWay(language){
+        const li = document.createElement('li')
+        // const addText = document.createTextNode(`${language}`)     //language
+        // li.appendChild(addText);
+        li.appendChild(document.createTextNode(language))
+        document.querySelector('.language').appendChild(li)                //  <-- add to ese hi krege
+    }
+    addlanguageOptimizedWay("cpp")
+    addlanguageOptimizedWay("mysql")
+
+
+    //Edit 
+
+    const firstList = document.querySelector("li:first-child")
+    firstList.style.color = "red"
+
+    const secondList = document.querySelector("li:nth-child(2)")
+
+    // secondList.innerHTML = "MOJO"
+          //or
+    const newList = document.createElement('li')
+    newList.textContent = "MOJO"                               //textContent innerHTML se aur khrab h, aur innerHtml se acha h create textnode,[note:innerHTML is also used in many cases]
+    secondList.replaceWith(newList)
+
+
+    //edit 
+    //typescript as javascript
+    firstList.outerHTML='<li>TypeScript</li>'
+    //or
+    // firstList.innerHTML="typeScript"
+
+    // const addText = document.createTextNode("TypeScript")
+    // firstList.appendChild(addText)                                  // * JavaScriptTypeScript
+
+    // const addText = document.createTextNode("TypeScript")
+    // firstList.replaceChildren(addText)                            // * TypeScript
+
+
+    //REMOVE
+
+    const lastli = document.querySelector('li:last-child')
+    lastli.remove()                 //mysql removed
+
+</script>
+</html>
