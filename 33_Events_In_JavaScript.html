@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <!-- <li><img width="200px" id="owl" onclick="alert('owl clicked')" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li> -->
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" target="_blank" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+
+    // [NOTE: In js all events runs sequentialy, kuch exception h , 
+    //        *pr javaScript ak sequentialy run laguage h,  
+    //        * pr kai bar hm en sequentially ko ignore krjate h : jese 1) asynchronous programming
+    //                                                                  2) ye browser ke events]
+
+    // browser event ese hi sequencially run nhi hota h, kuch activity pr invoke hote h,  (mouse move, click) 
+
+//****************************************************************************************************
+
+//   ex CLICK event lgana h --->  1 way) onclick  as attribute      ex owl    (in js me yh feasible approach nhi h, pr react m h, confuse mt hona)
+//  
+//                                2 way)  document.getElementById('owl').onclick = function(){
+//                                               alert('owl clicked')
+//                                         }                       
+//            -> this method is good, but not give more information other than click functionality
+//            -> USE EVENT THEY GIVE CLICK FN AS WELL AS PROPOGATION ABILITY
+
+//                                3 way)
+//      document.getElementById('owl').addEventListener('click', function(e){    //e - event object 
+//                 ...............
+//       },false)    // 3 para false/ true ; [false likhna hota h pr  BYDEFAULT----->FALSE hi hota h isliye nhi likhege to bhi chalega]
+
+//                                4 way)   attachEvent    (at place of addEventListener )
+//                                5 way)   jQuery-  on    (on at place of addEventListener)
+
+//****************************************************************************************************
+
+// document.getElementById('owl').addEventListener('click', function(e){    
+//        console.log(e);     // as we know e(pointerEvent) is object----> imp browser Event, Environment Event
+       
+// })
+//Basic Events
+//   type(click), timestamp, defaultPrevented, stopPropogation
+//   target, toElement, srcElement(imp), currentTarget
+//   clientX, clientY, screenX, screenY                            <----- Interview 
+//   altKey, ctrlKey, shiftKey, keyCode
+
+//****************************************************************************************************
+
+// 3 para true/false                <---- do no me same kam ho rha h to, EVENT PROPOGATION H KYA ?
+//    EVENT PROPOGATION :
+// Event Propogation  KE do context hote h :  1) Event Bubbling      ---> false
+//                                            2) Event capturing     ---> true
+
+// 1) ex :  FOR FALSE -------------------->
+
+// document.getElementById('images').addEventListener('click',function(e){
+//     console.log("clicked inside the ul");
+// }, false)
+// document.getElementById('owl').addEventListener('click',function(e){
+//     console.log("owl clicked");
+// }, false)
+
+// case : owl pr click kro ge to specific code to chalega,pr owl bhi to ul ke ander h, to apka top vala
+//        code bhi active hona chahiye
+// QUE : PR KON SA KB ACTIVE HOGA 
+
+/* false, bydefault-false, event bubbling
+    to event bubbling m kya hota h, niche se upper jata h (tracking inside to outside), TO...
+*/
+// ANS : to apka ans :          owl clicked   (then)    clicked inside the ul   
+
+
+// 2 ) ex :  FOR TRUE  --------------------->
+
+// document.getElementById('images').addEventListener('click', function(E){
+//     console.log('clicked inside the ul');
+// }, true)
+// document.getElementById('owl').addEventListener('click',function(E){
+//     console.log('owl clicked');
+    
+// }, true)
+
+// QUE : AB KON SA CHALEGA PHLE       (if owl pr click kiya,  chalege to dono----> YHI PROPOGATION H)
+
+// ANS : to apka ans :          clicked inside the ul  (then) owl clicked
+
+// document.getElementById('images').addEventListener('click', function(e){
+//     console.log('clicked inside the ul');
+// })
+// document.getElementById('owl').addEventListener('click',function(e){
+//     console.log('owl clicked');
+//     e.stopPropagation();                       // <--------------  AB APKA ELEMENT BUBBLE HO KR 
+// })                                             //                  UPPER KE ELEMENT PR NHI JAYE GA
+
+//****************************************************************************************************
+
+// preventDefault  : 
+
+// used for : (a) submit purpose (ki ruko khi submit mt kr dena)
+//            (b) navigation rokne ke liye
+
+// document.getElementById('google').addEventListener('click', function(e){
+//     console.log(`google clicked`);
+//     e.stopPropagation()
+//     e.preventDefault()
+// })
+
+//****************************************************************************************************
+
+//task ki m jese hi img pr click kru to vh gayb ho jaye
+
+// document.querySelector('#images').addEventListener('click', function(e){
+//     // console.log(e);
+//     // console.log(e.target)
+
+//     // console.log(e.target.parentNode)
+//     const removeIt = e.target.parentNode 
+
+//     // removeIt.remove()                       // remove (1st) way  <----------- direct element ko remove kr diya
+//          //or
+//     //removeIt.parentNode.removeChild(removeIt)       // remove (2nd) way  <-------- uske parent 
+
+//     // parentElement.removeChild(childElement);
+
+
+//     // BUT THERE IS PROBLEM IF : i directly clicked at list(or ul m khi bhi except img) --> TB PURA UL
+//     //                           GAYB HO JAYEGA    
+//     //          -----> 1waym) e.target.parentNode  -> parent ul a jayega  -> ul.remove() ho jayega
+//     //          -----> 2waymBhi) e.target.parenentNode -> parent yani ul -> ul.parentNode.removeChild(ul) i.e body.removeChild(ul)
+//     // CONDITION LAGAYE G HM UPPER DEKHO
+// }, false) 
+
+// UPDATED CODE
+document.querySelector('#images').addEventListener('click', function(e){
+    // console.log(e.target.tagName)
+    if(e.target.tagName === 'IMG'){
+         let removeIt = e.target.parentNode;
+         removeIt.remove()
+    }
+});
+</script>
+</html>
+
+<!-- 
+e.target.id
+e.target.tagName
+-->
