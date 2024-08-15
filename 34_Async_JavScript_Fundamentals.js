@@ -5,7 +5,7 @@
     >  synchronous                    -----                            <---- isliye js slow hoti h
                                             default
     > single threaded                 -----
-  
+   
 
     [Note : javaScript ka engine akela hota hi nhi h, uske sath run time environment hota(ya to
             browser ka, node ka etc) (kyo ki js ka engine bhut slow hota as it is singlethreaded)]
