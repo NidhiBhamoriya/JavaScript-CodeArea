@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: rgb(14, 14, 14); color: white;">
+    <p>Start should change the background-color every second</p>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    const start = document.querySelector('#start')
+    const stop = document.querySelector('#stop')
+    
+    const randomColor = function(){
+        const hex = "0123456789ABCDEF"    // index 0 se 15   
+        let color = "#"     // #000000 #ffffff  
+        for(let i=0; i<6; i++){
+            // color += hex[random index]        <---    //6 time push kre ge hex value   ---> (pr hme to hex Value random chahiyw for random color ke liye)
+            color += hex[Math.ceil(Math.random() * 15)]       // 16 --> floor value   , 15---->ceil value    (+1 nhi krege hme 0 bhi chahiye)
+        }
+        return color
+    };
+
+    let reference;
+    start.addEventListener('click', function(){
+        // if(!reference){
+        //     // 32 to 35
+        // }
+        reference = setInterval(function(){
+            document.querySelector('body').style.backgroundColor = randomColor()
+        },1000)
+    })
+
+    stop.addEventListener('click', function(){
+        clearInterval(reference)
+        // corner case nhi kroge to code to shi chalega hi vese bhi
+        //reference = null;    //kam ho jane pr varable ko clear krne ke sath sath deference kr rhi hu
+    })
+    
+</script>
+</html>

@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>35_Proj1_Async_Practice.html</title>
+</head>
+<body style="background-color: rgb(18, 17, 17); color: white;">
+    <h1> Hello Developers</h1>
+    <button id="start">start</button>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    // setInterval(function(){
+    //     // console.log('nidhi', Date.now());
+    // }, 1000)
+
+    //**********************************************************************
+    //3 rd para, reference pass krege
+    let sayDate = function(str){
+        console.log(str, Date.now());
+    }
+    // let reference = setInterval(sayDate, 1000, 'TimeStamp->')     <------- event m likhege  (4 line ko ya es line ko)
+
+    let reference    // yha esko declare kna anivary  tha
+    document.querySelector('#start').addEventListener('click', function(){
+        // let sayDate = function(str){
+        //     console.log(str, Date.now());
+        // }
+         reference = setInterval(sayDate, 1000, 'TimeStamp->')
+    })
+
+
+    // uper vala code chalta hi jayega --> use rokne ke liye
+    // clearInterval(reference)    is trh se direct likho ge to setInteval dena ka koi mtlb hi nhi h, kyo ki yh line setInterval ko ak bar bhi nhi chlne degi and rok legi, hm particular event pr hi setInteval ko roke g
+
+    document.querySelector('#stop').addEventListener('click', function(){
+        clearInterval(reference) 
+    })
+
+    // vaps chalu kbhi krna ho to start btn di h
+    // pr pr vaps chalu krne ka code uper hi likhna pdega vo bhi event m  yha nhi likhna h niche   <----- OK
+    //*************************************************************************
+     
+</script>
+</html>

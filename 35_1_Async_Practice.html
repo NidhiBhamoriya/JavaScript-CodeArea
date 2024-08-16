@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>35_Proj1_Async_Practice.html</title>
+</head>
+<body style="background-color: rgb(18, 17, 17); color: white;">
+    <h1> Hello Developers</h1>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    // setTimeout(handler/callback, time)
+    // setTimeout(function(){
+    //     console.log('heloo');     //[Note ak time hi print hoga]
+    // }, 2000)
+
+
+    //***********************************************************************************
+    // setInterval(function(){
+    //     console.log('nidhi'); 
+    // }, 1000)
+
+
+    //**********************************************************************************
+    // const saynidhi = function(){
+    //     console.log('nidhi');
+    // }
+
+    // setInterval(saynidhi, 1000)    //  [NOTE : REFERENCE  dena execute mt kra dena]
+
+    
+    //********************************************************************************************
+    // document.querySelector('h1').innerHTML = 'Best JS Series'     //pr ye kam 2 sec bad
+    const changeText = function(){
+        document.querySelector('h1').innerHTML = 'Hello Engineers'
+    }
+    const loleliyaReference = setTimeout(changeText,2000)     //reference dediya 
+
+
+    //  NOTE : there is need of, stop of setTimeout, kyo ki jis time pr event nhi hua ho to/ aur muje rokna
+    //           h is event ko to  ----> m use kr skta clearsetTimeout -----> with help of stop button
+
+    // clearTimeout()      pr hm esko ese likhte h  ,,,,,  isme reference dena hota he ki konse setTimeout
+//                                                          ko ap htana chahte ho, uska reference
+ 
+    //clearTimeout(loleliyaReference)        // <-------------- jese hi 2 sec hoge y line setTimeout ko clear
+//                                                            kr degi queue se, 
+//                                                   --> FIR TO PAGE PR KOI CHANGE HI NHI HOGA (ye to glt h)
+
+
+    // TO HM ESKO EVENT PR LGA DEGE
+    // event ----> button di to h hmne
+    document.querySelector('#stop').addEventListener('click', function(){
+        clearTimeout(loleliyaReference);
+        console.log('stop');
+    })
+
+</script>
+</html>
+
+<!-- 
+setTimeOut, setInterval (are the method) present in window
+
+-> clearTimeOut, clearInterval
+
+***** setTimeOut  -> time set kr rhe h ki en time k bad call back kr duga/ kam kr duga
+
+***** setInterval -> interval mgta h/ break -> and repeated work after each interval kr bad
+
+  handler  ===> function without name  (callback)
+            ===> reference bhi ho skta h
+-->
