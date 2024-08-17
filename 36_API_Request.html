@@ -1,0 +1,124 @@
+
+ <!-- 
+  => api.github.com       ===> api.github.com/users/hiteshchoudhary
+  => randomuser.me     ==>  json Formatter
+  ->https://jsonplaceholder.typicode.com/users
+ -->
+
+
+ <!--  1) fetch ke phle bhi api reqest hoti, pr tb hm XMLHttpRequest (XHR) bejte the -->
+
+
+ <!-- 1.1) XMLHttpRequest (XHR) :                  object
+
+          ->XMLHttpRequest (XHR) objects are used to interact with servers.
+          ->You can retrieve data from a URL without having to do a full page refresh
+ 
+          -> a) XMLHttpRequest.readyState    ==> property returns the state an XMLHttpRequest client is in.
+                                                                       or
+                                                Returns a number representing the state of the request.
+          Value	 State	            Description
+            0	 UNSENT	            Client has been created. open() not called yet.
+            1	 OPENED	            open() has been called.
+            2	 HEADERS_RECEIVED	send() has been called, and headers and status are available.
+            3	 LOADING	        Downloading; responseText holds partial data.
+            4	 DONE	            The operation is complete.              <----- data aa chuka h
+
+          -> b) XMLHttpRequest.responseText  ==> Returns a string that contains the response to the request 
+                                                 as text, or null if the request was unsuccessful or has not yet been sent.
+ 
+ 
+       var xhr = new  XMLHttpRequest();
+       xhr.open('GET', 'https://')           
+       xhr.send()
+       xhr.onreadystatechange = function(){          <----   xhr.onreadystatechange  <-- yh continuesly state ko track krti/ monitor krti h
+            if(xhr.readystate === 4){
+                console.log(xhr.responseText)
+            }
+       }
+
+       onreadystatechange   ==>  jese hi state change hoti h vese hi execute hota h (asynchronous hi)
+-->
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #card{
+            margin-top: 30%;
+        }
+        #imgs{
+            width: 300px;
+        }
+    </style>
+ </head>
+ <body style="background-color: black; color:white; text-align: center;">
+    <div id="card">
+        <h1>Hitesh</h1>
+        <img id="imgs">
+        <h2 id="followers"></h2>
+    </div>
+ </body>
+ <script>
+    
+    const requrl = 'https://api.github.com/users/hiteshchoudhary'
+    const xhr = new XMLHttpRequest()
+        // console.log(xhr.readyState)           //<------ 0
+        // xhr.onreadystatechange = function(){
+        //     console.log(xhr.readyState);         // 1 2 3 4  <---  0 state to onreadystatechange uske bad track krega
+        // }
+    xhr.open('GET', requrl )         // open hi request bejta h-> konse type ki request get/post  //open abhi call nhi hua h
+        // console.log(xhr.readyState)           //<------ 1
+    xhr.onreadystatechange = function(){
+        console.log(xhr.readyState)         // 2 3 4    <---  open to ho gya n uske bad track kre ga
+        // hmara kam to hojata h jb state 4 pr phuch jati h
+        if(xhr.readyState === 4){
+            console.log(xhr.responseText)    // or this.responseText
+            const data = JSON.parse(xhr.responseText)    // response data varibale m hold kr liya bad m use krne ke liye
+            console.log(typeof data);   //object
+            console.log(data.followers);
+
+            const follower = data.followers;
+            const img = data.avatar_url;
+            
+            document.getElementById('imgs').setAttribute('src',`${img}`)
+            document.getElementById('followers').innerHTML = `Followes : ${follower}`
+        }
+    }   
+    xhr.send()         //send ke dvara hi open called hota h
+    
+        // (not visible) pr state jo h vo change ho rhe h      ---> chalo dekh lete h
+
+        //  console.log(xhr.readyState)          //<------- 1
+
+
+
+    
+ </script>
+ </html>
+
+ <!--       iif we write =======> const data = xhr.responseText 
+
+ // data m objet aya h
+    // ap information access kre ge
+    console.log("followers:", data.followers);    //o/p : followers: undefined    
+
+    //undefined kese
+
+//*************** [NOTE : AP JB BHI REQ, BEJ KR DATA LETE HO TO 99% CASE M YH DATA AS STRING KE FORM M ATA H]
+    
+    console.log(typeof data);         //string
+
+   // to use object m convert krna pde ga
+
+   // const data = Object(xhr.responseText) ===> note: ese mt convert kr dena 
+                                                  ====> kyo ki yh ak jason data h  
+                                                        -> json object m convert krna pdega
+    const data = JSON.parse(xhr.responseText)        <------ JSON object h ==> parse ak method h jo string
+                                                                               ko json m convert kr deta h
+
+
+ -->
